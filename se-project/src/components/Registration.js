@@ -16,29 +16,29 @@ const Registration = () => {
     const testing=(e)=> {
       e.preventDefault();
       fetch("http://localhost:8080/test", {
-        method:"PUT",
+        method:"POST",
         headers:{
           "Content-Type" : "application/json"
         },
-        //body: JSON.stringify(e)
+        body: JSON.stringify(newAccount)
       })
-      /*.then(res=>{
+      .then(res=>{
           console.log(1,res);
           if(res.status === 201){
             return res.json();
           }else{
             return null;
           }
-        })*/
-      .then(res=>{
-        console.log(res)
-        if(res!==null){
-          navigate("/");
-        }else{
-          alert('fails');
-        }
+        });
+      // .then(res=>{
+      //   console.log(res)
+      //   if(res!==null){
+      //     navigate("/");
+      //   }else{
+      //     alert('fails');
+      //   }
       
-      });
+      // });
   
     }
     const onSubmit = (e) => {
@@ -55,6 +55,7 @@ const Registration = () => {
       updatenewacc(a);
       console.log(newAccount);
       console.log(JSON.stringify(newAccount));
+      testing(e);
     };
     const navigate=useNavigate()
     return (
@@ -168,7 +169,9 @@ const Registration = () => {
           />
 
           <br />
-           <input type="submit" value="Submit" className="btn" onClick={testing} style={{width:100, height:40, marginTop:10,textAlign:'center',color: 'blue',borderColor: 'blue'}} />
+           <input type="submit" value="Submit" className="btn" 
+           //onClick={testing} 
+           style={{width:100, height:40, marginTop:10,textAlign:'center',color: 'blue',borderColor: 'blue'}} />
         </div>
 
         <h1 

@@ -37,34 +37,34 @@ const Login = () => {
         email: "",
         pass: "",
        });
-       const testing=(e)=> {
-        e.preventDefault();
-        fetch("http://localhost:8080/test", {
-          method:"PUT",
-          headers:{
-            "Content-Type" : "application/json"
-          },
-          //body: JSON.stringify(e)
-        })
-        /*.then(res=>{
-            console.log(1,res);
-            if(res.status === 201){
-              return res.json();
-            }else{
-              return null;
-            }
-          })*/
-        .then(res=>{
-          console.log(res)
-          if(res!==null){
-            navigate("/Registration");
-          }else{
-            alert('fails');
-          }
+      //  const testing=(e)=> {
+      //   e.preventDefault();
+      //   fetch("http://localhost:8080/test", {
+      //     method:"PUT",
+      //     headers:{
+      //       "Content-Type" : "application/json"
+      //     },
+      //     //body: JSON.stringify(e)
+      //   })
+      //   /*.then(res=>{
+      //       console.log(1,res);
+      //       if(res.status === 201){
+      //         return res.json();
+      //       }else{
+      //         return null;
+      //       }
+      //     })*/
+      //   .then(res=>{
+      //     console.log(res)
+      //     if(res!==null){
+      //       navigate("/Registration");
+      //     }else{
+      //       alert('fails');
+      //     }
         
-        });
+      //   });
     
-      }
+      // }
 const onSubmit = (e) => {
         e.preventDefault();
         let a = {
@@ -91,6 +91,11 @@ const onSubmit = (e) => {
       name="email"
       //value={"Username/Email"} 
       placeholder="Username/Email"
+      onChange={(e) => {
+        const value = e.target.value;
+        updateuser({ ...user, email: e.target.value });
+        //console.log(user);
+      }}
       style={{width:200, height:40, marginTop:20}} />
     </div>
       <br/>
@@ -99,10 +104,17 @@ const onSubmit = (e) => {
       //value={"Password"}
       name="pass"
       placeholder='Password'
+      onChange={(e) => {
+        const value = e.target.value;
+        updateuser({ ...user, pass: e.target.value });
+        //console.log(user);
+      }}
       style={{width:200, height:40, marginTop:10}} />
       <br/>
       <br/>
-      <input className="Body" type="submit" value="Login" onClick={testing} style={{marginRight:100, width:100, height:40, marginTop:10, color: 'blue',borderColor: 'blue'}}/>
+      <input className="Body" type="submit" value="Login" 
+      //onClick={testing} 
+      style={{marginRight:100, width:100, height:40, marginTop:10, color: 'blue',borderColor: 'blue'}}/>
       </form>
       <br/>
       <br/>
