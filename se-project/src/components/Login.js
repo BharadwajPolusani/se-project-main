@@ -37,34 +37,36 @@ const Login = () => {
         email: "",
         pass: "",
        });
-      //  const testing=(e)=> {
-      //   e.preventDefault();
-      //   fetch("http://localhost:8080/test", {
-      //     method:"PUT",
-      //     headers:{
-      //       "Content-Type" : "application/json"
-      //     },
-      //     //body: JSON.stringify(e)
-      //   })
-      //   /*.then(res=>{
-      //       console.log(1,res);
-      //       if(res.status === 201){
-      //         return res.json();
-      //       }else{
-      //         return null;
-      //       }
-      //     })*/
-      //   .then(res=>{
-      //     console.log(res)
-      //     if(res!==null){
-      //       navigate("/Registration");
-      //     }else{
-      //       alert('fails');
-      //     }
+       const testing=(e)=> {
+        e.preventDefault();
+        fetch("http://localhost:8080/test", {
+          method:"POST",
+          headers:{
+            "Content-Type" : "application/json"
+          },
+          body: JSON.stringify(user)
+        })
+        .then(res=>{
+            console.log(1,res);
+            if(res.status === 200){
+              let output = res.json()
+              console.log(output)
+              return res.json();
+            }else{
+              return null;
+            }
+          })
+        .then(res=>{
+          console.log(res)
+          if(res!==null){
+            navigate("/Registration");
+          }else{
+            alert('fails');
+          }
         
-      //   });
+        });
     
-      // }
+      }
 const onSubmit = (e) => {
         e.preventDefault();
         let a = {
@@ -113,7 +115,7 @@ const onSubmit = (e) => {
       <br/>
       <br/>
       <input className="Body" type="submit" value="Login" 
-      //onClick={testing} 
+      onClick={testing} 
       style={{marginRight:100, width:100, height:40, marginTop:10, color: 'blue',borderColor: 'blue'}}/>
       </form>
       <br/>
