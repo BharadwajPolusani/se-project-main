@@ -17,14 +17,14 @@ const Booking = () => {
       const [newAccount, updatenewacc] = useState({
         service: "",
         location: "",
-        nameofservice: "",
+       // nameofservice: "",
         date: "",
         slot: ""
       });
 
       const onSubmit = (e) => {
         e.preventDefault();
-        console.log(newAccount)
+        //console.log(newAccount)
         let a = {
           // service: e.target.service.value,
           // city: e.target.city.value,
@@ -59,7 +59,7 @@ const Booking = () => {
       // bookingTimes=api response
       
       setSelectedDate(event.target.value);
-      console.log(event.target.value);
+      //console.log(event.target.value);
   }
 
   let type = null;
@@ -89,33 +89,39 @@ const Booking = () => {
 return (
     <div>
         <form className="add-form" onSubmit={onSubmit}>
-            <select onChange={(e) => {
+            Select Service :
+            <select 
+            style={{width:400, height:40, marginTop:10,textAlign:'center'}}
+            onChange={(e) => {
               const value = e.target.value;
               updatenewacc({ ...newAccount, service: e.target.value });
               //console.log(value);
             }}>
+            <option>Services</option>
             <option value="Bank">Bank</option>
-            <option selected value="Hospital">Hospital</option>
-            <option value="Saloon">Saloon</option>
+            {/* <option value="Hospital">Hospital</option>
+            <option value="Saloon">Saloon</option> */}
             </select>
             <br/>
             <br/>
+             Select Locations :
             <select
+             style={{width:400, height:40, marginTop:10,textAlign:'center'}}
              onChange={(e) => {
               changeCity(e);
               const value = e.target.value;
               updatenewacc({ ...newAccount, location: e.target.value });
               //console.log(value);
             }}>
-            <option>Choose City</option>
+            <option>Locations</option>
             <option value="Overland Park">Overland Park</option>
             <option value="Kansas City">Kansas City</option>
             <option value="Lees Summit">Lee's Summit</option>
             <option value="Corbin Park">Corbin Park</option>
             </select>
             <br/>
-            <br/>
-            <select 
+            {/* <br/> */}
+            {/* <select 
             onChange={(e) => {
               const value = e.target.value;
               updatenewacc({ ...newAccount, nameofservice: e.target.value });
@@ -124,9 +130,10 @@ return (
             {
               options
             }
-            </select>
+            </select> */}
+            {/* <br/> */}
             <br/>
-            <br/>
+            Select Date : 
             <input
             onChange={(e) => {
               changeDate(e);
@@ -135,17 +142,21 @@ return (
               //console.log(value);
             }}
             name="BookingDate"
+            placeholder="Choose Date"
             required={true}
             type="date"
             style={{width:400, height:40, marginTop:10,textAlign:'center'}}
-            placeholder=""
+            // placeholder=" Choose Date"
             //onChange={changeDate}
             
             
           />
           <br/>
           <br/>
-          <select onChange={(e) => {
+          Select Slot :
+          <select
+              sele
+              onChange={(e) => {
               const value = e.target.value;
               updatenewacc({ ...newAccount, slot: e.target.value });
               //console.log(value);
