@@ -14,8 +14,8 @@ const Booking = () => {
   });
   const testing=(e)=> {
     e.preventDefault();
-    fetch("http://localhost:8080/test", {
-      method:"PUT",
+    fetch("http://localhost:8080/user", {
+      method:"POST",
       headers:{
         "Content-Type" : "application/json"
       },
