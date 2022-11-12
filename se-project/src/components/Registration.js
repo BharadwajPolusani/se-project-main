@@ -5,8 +5,8 @@ import logo from './../images/logo.png';
 import '../../src/components/Registration.css';
 const Registration = () => {
     const [newAccount, updatenewacc] = useState({
-      fname: "",
-      lname: "",
+      first_name: "",
+      last_name: "",
       email: "",
       pass: "",
       dob: "",
@@ -44,7 +44,7 @@ const Registration = () => {
     const onSubmit = (e) => {
       e.preventDefault();
       let a = {
-        fname: e.target.fname.value,
+        first_name: e.target.first_name.value,
         lname: e.target.lname.value,
         email: e.target.email.value,
         pass: e.target.pass.value,
@@ -63,7 +63,7 @@ const Registration = () => {
         <img src={logo} style={{height: 100, width:100, float:'left' , margin:40}} alt="logo" />
         <div className="form-control">
         <input
-            name="fname"
+            name="first_name"
             required={true}
             type="text"
             //value={"First Name"}
@@ -72,7 +72,7 @@ const Registration = () => {
             //value={text}
             onChange={(e) => {
               const value = e.target.value;
-              updatenewacc({ ...newAccount, fname: e.target.value });
+              updatenewacc({ ...newAccount, first_name: e.target.value });
               //console.log(newAccount);
             }}
           />
