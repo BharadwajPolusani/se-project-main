@@ -60,14 +60,17 @@ const Registration = () => {
     const navigate=useNavigate()
     return (
       <form className="add-form" onSubmit={onSubmit}>
-        <img src={logo} style={{height: 100, width:100, float:'left' , margin:40}} alt="logo" />
+       
         <div className="form-control">
+        <img src={logo} style={{height: 100, width:100, float:'left' , margin:40}} alt="logo" />
+        <h1 
+        style={{fontFamily:'"Trebuchet MS Bold Italic", "Trebuchet MS", sans-serif',fontWeight:700,fontStyle:'italic',fontSize:'25px', marginRight: 75, textAlign: 'center', marginTop:60}}>Create new Account</h1>
         <input
             name="first_name"
             required={true}
             type="text"
             //value={"First Name"}
-            style={{width:400, height:40, marginTop:150,textAlign:'center'}}
+            style={{width:400, height:40, marginTop:150,textAlign:'center',marginRight:173}}
             placeholder="First Name"
             //value={text}
             onChange={(e) => {
@@ -174,8 +177,7 @@ const Registration = () => {
            style={{width:100, height:40, marginTop:10,textAlign:'center',color: 'blue',borderColor: 'blue'}} />
         </div>
 
-        <h1 
-        style={{fontFamily:'"Trebuchet MS Bold Italic", "Trebuchet MS", sans-serif',fontWeight:700,fontStyle:'italic',fontSize:'25px', marginRight: 75, textAlign: 'center', marginTop:60}}>Create new Account</h1>
+        
        
       </form>
       
