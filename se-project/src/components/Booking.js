@@ -1,7 +1,8 @@
 import { useState } from "react";
 import React from "react";
 import { BrowserRouter, useNavigate, Link, Router, Route, Routes} from "react-router-dom";
-
+//write an api to fetch locations on page reload 
+//
 const Booking = () => {
 
     const [selected, setSelected] = React.useState("");
@@ -100,13 +101,14 @@ return (
             </select>
             <br/>
             <br/>
+ 
             <select
              onChange={(e) => {
               changeCity(e);
               const value = e.target.value;
               updatenewacc({ ...newAccount, location: e.target.value });
               //console.log(value);
-            }}>
+            }}>   //city,state should be populated with the results'response' from /location api call
             <option>Choose City</option>
             <option value="Overland Park">Overland Park</option>
             <option value="Kansas City">Kansas City</option>

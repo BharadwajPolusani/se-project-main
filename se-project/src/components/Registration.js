@@ -4,7 +4,7 @@ import { BrowserRouter, useNavigate, Link, Router, Route, Routes} from "react-ro
 import logo from './../images/logo.png';
 import '../../src/components/Registration.css';
 const Registration = () => {
-    const [newAccount, updatenewacc] = useState({
+    const [newAccount, updatenewacc] = useState({ //need to modify field names
       first_name: "",
       last_name: "",
       email: "",
@@ -13,9 +13,9 @@ const Registration = () => {
       ssn: "",
       mobile: ""
     });
-    const testing=(e)=> {
+    const testing=(e)=> { //chnage the method name, 
       e.preventDefault();
-      fetch("http://localhost:8080/test", {
+      fetch("http://localhost:8080/user", {
         method:"POST",
         headers:{
           "Content-Type" : "application/json"
@@ -27,18 +27,18 @@ const Registration = () => {
           if(res.status === 201){
             return res.json();
           }else{
-            return null;
+            alert('user not created');
           }
-        });
-      // .then(res=>{
-      //   console.log(res)
-      //   if(res!==null){
-      //     navigate("/");
-      //   }else{
-      //     alert('fails');
-      //   }
+        })
+      .then(res=>{
+        console.log(res)
+        if(res!==null){
+          navigate("/");
+        }else{
+          alert('fails');
+        }
       
-      // });
+      });
   
     }
     const onSubmit = (e) => {
