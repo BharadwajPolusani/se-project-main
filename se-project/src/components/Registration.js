@@ -7,11 +7,11 @@ const Registration = () => {
     const [newAccount, updatenewacc] = useState({ //need to modify field names
       first_name: "",
       last_name: "",
-      email: "",
-      pass: "",
+      email_id: "",
+      password: "",
       dob: "",
       ssn: "",
-      mobile: ""
+      telephone: ""
     });
     const testing=(e)=> { //chnage the method name, 
       e.preventDefault();
@@ -45,12 +45,12 @@ const Registration = () => {
       e.preventDefault();
       let a = {
         first_name: e.target.first_name.value,
-        lname: e.target.lname.value,
-        email: e.target.email.value,
-        pass: e.target.pass.value,
+        last_name: e.target.last_name.value,
+        email_id: e.target.email_id.value,
+        password: e.target.password.value,
         dob: e.target.dob.value,
         ssn: e.target.ssn.value,
-        mobile: e.target.mobile.value
+        telephone: e.target.telephone.value
       };
       updatenewacc(a);
       console.log(newAccount);
@@ -82,7 +82,7 @@ const Registration = () => {
           <br />
           
           <input
-            name="lname"
+            name="last_name"
             required={true}
             type="text"
             //value={"Last Name"}
@@ -91,7 +91,7 @@ const Registration = () => {
             //value={text}
             onChange={(e) => {
               const value = e.target.value;
-              updatenewacc({ ...newAccount, lname: e.target.value });
+              updatenewacc({ ...newAccount, last_name: e.target.value });
               //console.log(newAccount);
             }}
           />
@@ -99,7 +99,7 @@ const Registration = () => {
           <br />
           
           <input
-            name="email"
+            name="email_id"
             required={true}
             type="Email"
             //value={"Email"}
@@ -107,14 +107,14 @@ const Registration = () => {
             placeholder="Email"
             onChange={(e) => {
               const value = e.target.value;
-              updatenewacc({ ...newAccount, email: e.target.value });
+              updatenewacc({ ...newAccount, email_id: e.target.value });
             }}
           />
           <br />
           <br />
 
           <input
-            name="pass"
+            name="password"
             required={true}
             type="password"
             //value={"Email"}
@@ -122,7 +122,7 @@ const Registration = () => {
             placeholder="New Password"
             onChange={(e) => {
               const value = e.target.value;
-              updatenewacc({ ...newAccount, pass: e.target.value });
+              updatenewacc({ ...newAccount, password: e.target.value });
             }}
           />
           <br />
@@ -159,7 +159,7 @@ const Registration = () => {
           <br />
           
           <input
-            name="mobile"
+            name="telephone"
             required={true}
             type="tel"
             //value={"Mobile"}
@@ -167,7 +167,7 @@ const Registration = () => {
             placeholder="Mobile Number"
             onChange={(e) => {
               const value = e.target.value;
-              updatenewacc({ ...newAccount, mobile: e.target.value });
+              updatenewacc({ ...newAccount, telephone: e.target.value });
             }}
           />
 
