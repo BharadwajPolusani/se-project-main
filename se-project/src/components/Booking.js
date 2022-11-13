@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import { BrowserRouter, useNavigate, Link, Router, Route, Routes} from "react-router-dom";
 //write an api to fetch locations on page reload 
-//
+import '../../src/components/Booking.css';
+
 const Booking = () => {
 
     const [selected, setSelected] = React.useState("");
@@ -38,19 +39,8 @@ const Booking = () => {
         console.log(JSON.stringify(newAccount));
         //testing(e);
       };
+      let [bookingTimes, setBookingTimes] = useState([]);
     //let location = 'Overland Park';
-    let bookingTimes= [
-      "9AM",
-      "10AM",
-      "11AM",
-      "12AM",
-      "1PM",
-      "2PM",
-      "3PM",
-      "4PM",
-      "5PM"
-  ];
-
     const changeCity = (event) => {
         setSelected(event.target.value);
         //console.log('222')
@@ -58,9 +48,25 @@ const Booking = () => {
 
     const changeDate = (event) => {
       // bookingTimes=api response
-      
-      setSelectedDate(event.target.value);
-      console.log(event.target.value);
+      fetch(`http://localhost:8080/slots/${event.target.value}`, {
+        method:"GET",
+        headers:{
+          "Content-Type" : "application/json",
+          token : localStorage.getItem('token'),
+        },
+      })
+      .then(res=>{
+          if (res.status === 201 || res.status === 200){
+            return res.json();
+          } else{
+            // alert('Something went wrong!!');
+          }
+        })
+        .then((data) => {
+          setBookingTimes(data);
+          setSelectedDate(event.target.value);
+          console.log(event.target.value, data);
+        })
   }
 
   let type = null;
@@ -80,17 +86,13 @@ const Booking = () => {
 
   let bTs;
   if (selectedDate) {
-    // bookingTimes=[""+Math.random()*10 +" AM"];
-    
-    //console.log(bookingTimes)
-    //bTs = bookingTimes.map((el) => <div><input type="select" name={el} id={el} value={el}></input> {el}</div>);
-    bTs = bookingTimes.map((el) => <option key={el}>{el}</option>);
+    bTs = bookingTimes && bookingTimes.map((el) => <option key={el}>{el}</option>);
   }
 
 return (
     <div>
         <form className="add-form" onSubmit={onSubmit}>
-            <select onChange={(e) => {
+            <select class="form-field" onChange={(e) => {
               const value = e.target.value;
               updatenewacc({ ...newAccount, service: e.target.value });
               //console.log(value);
@@ -102,7 +104,7 @@ return (
             <br/>
             <br/>
  
-            <select
+            <select class="form-field" 
              onChange={(e) => {
               changeCity(e);
               const value = e.target.value;
@@ -117,7 +119,7 @@ return (
             </select>
             <br/>
             <br/>
-            <select 
+            <select class="form-field" 
             onChange={(e) => {
               const value = e.target.value;
               updatenewacc({ ...newAccount, nameofservice: e.target.value });
@@ -130,6 +132,7 @@ return (
             <br/>
             <br/>
             <input
+            class="form-field"
             onChange={(e) => {
               changeDate(e);
               const value = e.target.value;
@@ -139,7 +142,6 @@ return (
             name="BookingDate"
             required={true}
             type="date"
-            style={{width:400, height:40, marginTop:10,textAlign:'center'}}
             placeholder=""
             //onChange={changeDate}
             
@@ -147,16 +149,16 @@ return (
           />
           <br/>
           <br/>
-          <select onChange={(e) => {
+          <select class="form-field" onChange={(e) => {
               const value = e.target.value;
               updatenewacc({ ...newAccount, slot: e.target.value });
               //console.log(value);
             }}>{bTs}</select>
           <br/>
           <br/>
-          <input type="submit" value="Submit" className="btn" 
+          <input class="form-field" type="submit" value="Submit" className="btn" 
            //onClick={testing} 
-           style={{width:100, height:40, marginTop:10,textAlign:'center',color: 'blue',borderColor: 'blue'}} />
+           style={{width:400, height:40, marginTop:10,textAlign:'center'}} />
           
         </form>
 

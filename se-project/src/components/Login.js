@@ -43,7 +43,6 @@ const Login = () => {
         fetch("http://localhost:8080/test", {
           method:"POST",
           headers:{ 
-            //token : 
             'Accept': 'application/json',
             'Content-Type' : 'application/json'
           },
@@ -52,14 +51,15 @@ const Login = () => {
         .then(res=>{
             console.log(1,res);
             if(res.status === 200){
-              console.log(res.json()); //we need to store the token recieved in a global variable nd send this token as a header value in all api requests
-              return 0;
+              // console.log(res.json()); //we need to store the token recieved in a global variable nd send this token as a header value in all api requests
+              return res.json();
             }else{
               return null;
             }
           })
         .then(res=>{
           console.log(res)
+          localStorage.setItem("token", res.token);
           if(res!==null){
             navigate("/Booking");
           }else{
