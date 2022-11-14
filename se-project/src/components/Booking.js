@@ -19,7 +19,7 @@ const Booking = () => {
       const [newAccount, updatenewacc] = useState({
         service: "",
         location: "",
-        nameofservice: "",
+        //nameofservice: "",
         date: "",
         slot: ""
       });
@@ -40,6 +40,7 @@ const Booking = () => {
         //testing(e);
       };
       let [bookingTimes, setBookingTimes] = useState([]);
+      // setBookingTimes(["Choose Slot"]);
     //let location = 'Overland Park';
     const changeCity = (event) => {
         setSelected(event.target.value);
@@ -63,6 +64,7 @@ const Booking = () => {
           }
         })
         .then((data) => {
+          data.unshift("Choose Slot");
           setBookingTimes(data);
           setSelectedDate(event.target.value);
           console.log(event.target.value, data);
@@ -92,14 +94,17 @@ const Booking = () => {
 return (
     <div>
         <form className="add-form" onSubmit={onSubmit}>
-            <select class="form-field" onChange={(e) => {
+            <select class="form-field"
+             required={true}
+             onChange={(e) => {
               const value = e.target.value;
               updatenewacc({ ...newAccount, service: e.target.value });
               //console.log(value);
             }}>
+            <option selected>Choose Service</option>
             <option value="Bank">Bank</option>
-            <option selected value="Hospital">Hospital</option>
-            <option value="Saloon">Saloon</option>
+            {/* <option value="Hospital">Hospital</option>
+            <option value="Saloon">Saloon</option> */}
             </select>
             <br/>
             <br/>
@@ -118,8 +123,7 @@ return (
             <option value="Corbin Park">Corbin Park</option>
             </select>
             <br/>
-            <br/>
-            <select class="form-field" 
+            {/* <select class="form-field" 
             onChange={(e) => {
               const value = e.target.value;
               updatenewacc({ ...newAccount, nameofservice: e.target.value });
@@ -128,8 +132,7 @@ return (
             {
               options
             }
-            </select>
-            <br/>
+            </select> */}
             <br/>
             <input
             class="form-field"
