@@ -59,18 +59,35 @@ const Registration = () => {
     };
     const navigate=useNavigate()
     return (
-      <form className="add-form" onSubmit={onSubmit}>
+      <form onSubmit={onSubmit}>
        
-        <div className="form-control">
+        <div  style = {{width: '100%',
+    height: '100px',
+    display: 'flex',
+    alignContent: 'center',
+    justifyContent: 'space-between',
+    position: 'relative'}}>
+
+<div style={{width:'30%'}}>
         <img src={logo} style={{height: 100, width:100, float:'left' , margin:40}} alt="logo" />
+        </div>
+        <div style={{width:'70%'}}>
         <h1 
-        style={{fontFamily:'"Trebuchet MS Bold Italic", "Trebuchet MS", sans-serif',fontWeight:700,fontStyle:'italic',fontSize:'25px', marginRight: 75, textAlign: 'center', marginTop:60}}>Create new Account</h1>
+        style={{fontFamily:'"Trebuchet MS Bold Italic", "Trebuchet MS", sans-serif',
+        fontWeight:700,fontStyle:'italic',fontSize:'25px',paddingLeft:140, marginTop:60}}>Create new Account
+        </h1>
+        </div>
+        </div>
+        <div className="form-control">
+
+        <div>
+
         <input
             name="first_name"
             required={true}
             type="text"
             //value={"First Name"}
-            style={{width:400, height:40, marginTop:150,textAlign:'center',marginRight:173}}
+            style={{width:400, height:40, marginTop:150,textAlign:'center'}}
             placeholder="First Name"
             //value={text}
             onChange={(e) => {
@@ -80,13 +97,12 @@ const Registration = () => {
             }}
           />
           <br />
-          
           <input
             name="last_name"
             required={true}
             type="text"
             //value={"Last Name"}
-            style={{width:400, height:40, marginTop:50,textAlign:'center'}}
+            style={{width:400, height:40, marginTop:30,textAlign:'center'}}
             placeholder="Last Name"
             //value={text}
             onChange={(e) => {
@@ -176,8 +192,7 @@ const Registration = () => {
            //onClick={testing} 
            style={{width:100, height:40, marginTop:10,textAlign:'center',color: 'blue',borderColor: 'blue'}} />
         </div>
-
-        
+        </div>
        
       </form>
       
