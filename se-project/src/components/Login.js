@@ -61,7 +61,12 @@ const Login = () => {
           console.log(res)
           localStorage.setItem("token", res.token);
           if(res!==null){
+            if(res.isAdmin){
+              navigate("/Admin");
+            }
+            else{
             navigate("/Booking");
+            }
           }else{
             alert('fails');
           }
@@ -129,7 +134,7 @@ const onSubmit = (e) => {
       onClick={() => {
       navigate("/Registration");
       }}>
-        Not an Existing User
+        Create Account
       </button>
       </inputtext>
       <br/>

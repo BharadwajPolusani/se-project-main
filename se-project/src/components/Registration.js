@@ -34,6 +34,7 @@ const Registration = () => {
         console.log(res)
         if(res!==null){
           navigate("/");
+          alert("User created successfully!")
         }else{
           alert('fails');
         }

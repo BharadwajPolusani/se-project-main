@@ -8,14 +8,20 @@ const Admin = () => {
       add_date: "",
       add_slot: "",
       });
+    const [newSlot, updatenewSlot] = useState({
+      calendarId: {},
+      locationId: {},
+      slot: "",
+      isAvailable: "" 
+    });
     const testing=(e)=> { //chnage the method name, 
       e.preventDefault();
-      fetch("http://localhost:8080/user", {
+      fetch("http://localhost:8080/oneDate", {
         method:"POST",
         headers:{
           "Content-Type" : "application/json"
         },
-        body: JSON.stringify(newAccount)
+        body: JSON.stringify(newSlot)
       })
       .then(res=>{
           console.log(1,res);
@@ -84,6 +90,7 @@ const Admin = () => {
             onChange={(e) => {
               const value = e.target.value;
               updatenewacc({ ...newAccount, add_location: e.target.value });
+              updatenewSlot({...newSlot, locationId: {"cityState":e.target.value}});
               //console.log(newAccount);
             }}
           />
@@ -103,23 +110,52 @@ const Admin = () => {
               let Day = Days[new Date(e.target.value).getDay()]
               console.log(Day)
               updatenewacc({ ...newAccount, add_date: e.target.value });
+              updatenewSlot({...newSlot, calendarId: {"date":e.target.value,"day":Day,"isHoliday": false,"isWeekend":false}});
+
             }}
           />
           <br />
           <br />
          
-          <input
-            name="add_slot"
-            required={true}
-            type="text"
-            //value={"SSN"}
-            style={{width:400, height:40, marginTop:10,textAlign:'center'}}
-            placeholder="Add Slot"
-            onChange={(e) => {
+          <select  class="form-field"  required={true} name="add_slot" 
+          style={{width:400, height:40, marginTop:10,textAlign:'center'}} placeholder="Add Slot"
+             onChange={(e) => {
               const value = e.target.value;
-              updatenewacc({ ...newAccount, add_slot: e.target.value });
-            }}
-          />
+              updatenewacc({ ...newAccount, add_slot: e.target.value }); 
+              updatenewSlot({...newSlot, slot: e.target.value});
+      
+                    //console.log(value);
+            }} >   
+            <option selected disabled = {true} value="">Choose Slots ...</option>
+            <option value="default">default</option>
+            <option value="9AM">9AM</option>
+            <option value="10AM">10AM</option>
+            <option value="11AM">11AM</option>
+            <option value="12PM">12PM</option>
+            <option value="1PM">1PM</option>
+            <option value="2PM">2PM</option>
+            <option value="3PM">3PM</option>
+            <option value="4PM">4PM</option>
+            <option value="5PM">5PM</option>
+            </select>
+          
+            <br />
+          <br />
+            <select class="form-field"  required name="isAvailable" 
+          style={{width:400, height:40, marginTop:10,textAlign:'center'}} 
+             onChange={(e) => {
+              const value = e.target.value;
+              updatenewSlot({...newSlot, isAvailable: e.target.value});
+      
+                    //console.log(value);
+            }} >   
+            <option selected disabled = {true} value="">Choose Availability ...</option>
+            <option value="true">true</option>
+            <option value="false">false</option>
+            
+            </select>
+
+
           <br />
           <br />
            <input type="submit" value="Submit" className="btn" 
