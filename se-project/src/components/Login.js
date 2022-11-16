@@ -54,17 +54,17 @@ const Login = () => {
               // console.log(res.json()); //we need to store the token recieved in a global variable nd send this token as a header value in all api requests
               return res.json();
             }else{
-              return null;
+              alert('Invalid Credentials!')
             }
           })
         .then(res=>{
           console.log(res)
           localStorage.setItem("token", res.token);
           if(res!==null){
-            if(res.isAdmin){
+            if(res.isAdmin && res.valid){
               navigate("/Admin");
             }
-            else{
+            else if(res.valid){
             navigate("/Booking");
             }
           }else{

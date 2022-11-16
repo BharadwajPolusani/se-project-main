@@ -101,7 +101,7 @@ return (
               updatenewacc({ ...newAccount, service: e.target.value });
               //console.log(value);
             }}>
-            <option selected>Choose Service</option>
+            <option selected disabled = {true} value="">Choose Service ...</option>
             <option value="Bank">Bank</option>
             {/* <option value="Hospital">Hospital</option>
             <option value="Saloon">Saloon</option> */}
@@ -116,7 +116,7 @@ return (
               updatenewacc({ ...newAccount, location: e.target.value });
               //console.log(value);
             }}>   //city,state should be populated with the results'response' from /location api call
-            <option>Choose City</option>
+            <option selected disabled = {true} value="">Choose City ...</option>
             <option value="Overland Park">Overland Park</option>
             <option value="Kansas City">Kansas City</option>
             <option value="Lees Summit">Lee's Summit</option>
@@ -156,7 +156,8 @@ return (
               const value = e.target.value;
               updatenewacc({ ...newAccount, slot: e.target.value });
               //console.log(value);
-            }}>{bTs}</select>
+            }}><option selected disabled = {true} value="">Choose Slots ...</option>
+              {bTs}</select>
           <br/>
           <br/>
           <input class="form-field" type="submit" value="Submit" className="btn" 

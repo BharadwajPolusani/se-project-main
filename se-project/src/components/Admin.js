@@ -68,11 +68,16 @@ const Admin = () => {
 <div style={{width:'30%'}}>
         <img src={logo} style={{height: 100, width:100, float:'left' , margin:40}} alt="logo" />
         </div>
-        <div style={{width:'70%'}}>
+        <div style={{width:'60%'}}>
         <h1 
         style={{fontFamily:'"Trebuchet MS Bold Italic", "Trebuchet MS", sans-serif',
-        fontWeight:700,fontStyle:'italic',fontSize:'25px',paddingLeft:140, marginTop:60}}>Admin Account
+        fontWeight:700,fontStyle:'italic',fontSize:'25px',paddingLeft:170, marginTop:60}}>Admin Account
         </h1>
+        </div>
+        <div style={{width:'10%'}}>
+        <input type="logout" value="Logout" className="btn" 
+           //onClick={testing} 
+           style={{width:100, height:40, marginTop:40,textAlign:'center',color: 'green',borderColor: 'green'}} />
         </div>
         </div>
         <div className="form-control">
