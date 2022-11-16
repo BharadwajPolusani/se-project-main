@@ -19,7 +19,8 @@ const Admin = () => {
       fetch("http://localhost:8080/oneDate", {
         method:"POST",
         headers:{
-          "Content-Type" : "application/json"
+          "Content-Type" : "application/json",
+          token : localStorage.getItem('token'),
         },
         body: JSON.stringify(newSlot)
       })
