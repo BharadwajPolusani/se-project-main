@@ -123,7 +123,7 @@ const onSubmit = (e) => {
       <br/>
       <input className="Body" type="submit" value="Login" 
       onClick={testing} 
-      style={{marginRight:100, width:100, height:40, marginTop:10, color: 'blue',borderColor: 'blue'}}/>
+      style={{marginRight:100, width:100, height:40, marginTop:10, backgroundColor:'black',borderColor: 'black'}}/>
       </form>
       <br/>
       <br/>

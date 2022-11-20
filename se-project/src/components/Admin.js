@@ -93,7 +93,7 @@ const Admin = () => {
            required={true}
            type="text"
            //value={"First Name"}
-           style={{width:400, height:40, marginTop:150,textAlign:'center'}}
+           style={{width:400, height:40, marginTop:150,textAlign:'center',borderColor:'black'}}
            placeholder="Add Location Ex:Kansas City,MO"
            //value={text}
            onChange={(e) => {
@@ -165,10 +165,10 @@ const Admin = () => {
          <br />
          <br />
           <input type="submit" value="Submit" className="btn" 
-          style={{width:100, height:40, marginTop:100,textAlign:'center',color: 'black',backgroundColor:'yellowgreen',borderColor: 'black'}} />
+          style={{width:100, height:40, marginTop:50,textAlign:'center',color: 'black',backgroundColor:'lightBlue',borderColor: 'black'}} />
        </div>
        <button
-         style={{width:100, height:40, marginTop:50,marginLeft:1000,marginBottom:100,marginTop:10,textAlign:'center',color: 'white',backgroundColor:'black',borderColor: 'black'}}
+         style={{width:100, height:40, marginTop:50,marginLeft:1000,marginBottom:200,marginTop:10,textAlign:'center',color: 'white',backgroundColor:'black',borderColor: 'black'}}
           onClick={() => {
               navigate("/");
               }}>
