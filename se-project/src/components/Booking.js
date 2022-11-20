@@ -109,6 +109,7 @@ const Booking = () => {
     bTs = bookingTimes && bookingTimes.map((el) => <option key={el}>{el}</option>);
   }
 
+  const navigate=useNavigate()
   
 return (
     <div>
@@ -181,6 +182,14 @@ return (
            style={{width:400, height:40, marginTop:10,textAlign:'center'}} />
           
         </form>
+        <div>
+          <button
+          onClick={() => {
+              navigate("/");
+              }}>
+            Log Out
+          </button>
+        </div>
 
     </div>
         )

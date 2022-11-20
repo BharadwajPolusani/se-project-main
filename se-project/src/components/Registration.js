@@ -13,6 +13,7 @@ const Registration = () => {
       ssn: "",
       telephone: ""
     });
+    
     const testing=(e)=> { //chnage the method name, 
       e.preventDefault();
       fetch("http://localhost:8080/user", {

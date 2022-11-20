@@ -61,17 +61,17 @@ const Login = () => {
           console.log(res)
           localStorage.setItem("token", res.token);
           if(res!==null){
-            if(res.isAdmin && res.valid){
+            if(res.isAdmin){
               navigate("/Admin");
             }
-            else if(res.valid){
+            else {
             navigate("/Booking");
             }
           }else{
             alert('fails');
           }
         
-        });
+        }).catch(err => console.log(err));
     
       }
 const onSubmit = (e) => {
