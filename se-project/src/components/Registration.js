@@ -68,28 +68,19 @@ const Registration = () => {
     display: 'flex',
     alignContent: 'center',
     justifyContent: 'space-between',
-    position: 'relative'}}>
-
-<div style={{width:'30%'}}>
-        <img src={logo} style={{height: 100, width:100, float:'left' , margin:40}} alt="logo" />
-        </div>
-        <div style={{width:'70%'}}>
-        <h1 
-        style={{fontFamily:'"Trebuchet MS Bold Italic", "Trebuchet MS", sans-serif',
-        fontWeight:700,fontStyle:'italic',fontSize:'25px',paddingLeft:140, marginTop:60}}>Create new Account
-        </h1>
-        </div>
-        </div>
+    position: 'relative'}}/>
         <div className="form-control">
 
         <div>
-
+        <h2 className='Title'
+          style={{marginLeft:530}}
+          >Create New Account</h2>
         <input
             name="first_name"
             required={true}
             type="text"
             //value={"First Name"}
-            style={{width:400, height:40, marginTop:150,textAlign:'center'}}
+            style={{width:400, height:40, marginTop:10,textAlign:'center'}}
             placeholder="First Name"
             //value={text}
             onChange={(e) => {
@@ -192,7 +183,7 @@ const Registration = () => {
           <br />
            <input type="submit" value="Submit" className="btn" 
            //onClick={testing} 
-           style={{width:100, height:40, marginTop:10,textAlign:'center',color: 'blue',borderColor: 'blue'}} />
+           style={{width:100, height:40, marginTop:25,marginBottom:55,textAlign:'center',color: 'blue',borderColor: 'blue'}} />
         </div>
         </div>
        

@@ -168,7 +168,7 @@ const Admin = () => {
           style={{width:100, height:40, marginTop:50,textAlign:'center',color: 'black',backgroundColor:'lightBlue',borderColor: 'black'}} />
        </div>
        <button
-         style={{width:100, height:40, marginTop:50,marginLeft:1000,marginBottom:200,marginTop:10,textAlign:'center',color: 'white',backgroundColor:'black',borderColor: 'black'}}
+         style={{width:100, height:40, marginTop:50,marginLeft:1000,marginBottom:50,marginTop:10,textAlign:'center',color: 'white',backgroundColor:'black',borderColor: 'black'}}
           onClick={() => {
               navigate("/");
               }}>
