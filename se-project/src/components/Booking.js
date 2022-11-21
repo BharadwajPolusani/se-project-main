@@ -114,6 +114,9 @@ const Booking = () => {
 return (
     <div className="class">
         <form className="add-form" onSubmit={onSubmit}>
+          <h2 className='Title'
+          style={{marginLeft:530}}
+          >Book Your Slot</h2>
             <select class="form-field"
              style={{width:400, height:40, marginTop:10,textAlign:'center'}}
              required={true}
