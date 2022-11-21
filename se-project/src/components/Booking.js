@@ -112,9 +112,10 @@ const Booking = () => {
   const navigate=useNavigate()
   
 return (
-    <div>
+    <div className="class">
         <form className="add-form" onSubmit={onSubmit}>
             <select class="form-field"
+             style={{width:400, height:40, marginTop:10,textAlign:'center'}}
              required={true}
              onChange={(e) => {
               const value = e.target.value;
@@ -131,6 +132,7 @@ return (
             <br/>
  
             <select class="form-field" 
+            style={{width:400, height:40, marginTop:10,textAlign:'center'}}
              onChange={(e) => {
               changeCity(e);
               const value = e.target.value;
@@ -153,6 +155,7 @@ return (
             </select> */}
             <br/>
             <input
+            style={{width:400, height:40, marginTop:10,textAlign:'center'}}
             class="form-field"
             onChange={(e) => {
               changeDate(e);
@@ -169,7 +172,9 @@ return (
           />
           <br/>
           <br/>
-          <select class="form-field" onChange={(e) => {
+          <select class="form-field" 
+              style={{width:400, height:40, marginTop:10,textAlign:'center'}}
+              onChange={(e) => {
               const value = e.target.value;
               updatenewacc({ ...newAccount, slot: e.target.value });
               //console.log(value);
@@ -179,11 +184,12 @@ return (
           <br/>
           <input class="form-field" type="submit" value="Submit" className="btn" 
            //onClick={testing} 
-           style={{width:400, height:40, marginTop:10,textAlign:'center'}} />
+           style={{width:100, height:40, marginTop:50,textAlign:'center',color: 'black',backgroundColor:'lightBlue',borderColor: 'black'}} />
           
         </form>
         <div>
-          <button
+          <button 
+          style={{cursor:'pointer'}}
           onClick={() => {
               navigate("/");
               }}>
