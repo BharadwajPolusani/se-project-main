@@ -59,18 +59,18 @@ const Admin = () => {
     return (
       
       <div>
-      
+
       <form onSubmit={onSubmit}>
     
        <div  style = {{width: '110%',
-   height: '100px',
-   display: 'flex',
-   alignContent: 'center',
-   justifyContent: 'space-between',
-   position: 'relative'}}>
+          height: '100px',
+          display: 'flex',
+          alignContent: 'center',
+          justifyContent: 'space-between',
+          position: 'relative'}}>
 
-  <div style={{width:'30%'}}>
-       <img src={logo} style={{height: 100, width:100, float:'left' , margin:40}} alt="logo" />
+       <div style={{width:'30%'}}>
+         <img src={logo} style={{height: 100, width:100, float:'left' , margin:40}} alt="logo" />
        </div>
        <div style={{width:'60%'}}>
        <h1 
@@ -87,13 +87,18 @@ const Admin = () => {
        <div className="form-control">
 
        <div>
+       <h2 className='Title'
+        style={{marginLeft:520}}
+          >Add Your Slot Here</h2>
 
+      <h7 style={{fontWeight:700,fontStyle:'italic',fontSize:'18px',marginRight:295, marginTop:60}}>Add Location</h7>  
+       <br/>
        <input
            name="add_location"
            required={true}
            type="text"
            //value={"First Name"}
-           style={{width:400, height:40, marginTop:150,textAlign:'center',borderColor:'black'}}
+           style={{width:400, height:40, marginTop:10,textAlign:'center',borderColor:'black'}}
            placeholder="Add Location Ex:Kansas City,MO"
            //value={text}
            onChange={(e) => {
@@ -103,9 +108,9 @@ const Admin = () => {
              //console.log(newAccount);
            }}
          />
-         <br />
-         <br />
-         
+         <br /><br/>
+         <h7 style={{fontWeight:700,fontStyle:'italic',fontSize:'18px',marginRight:330, marginTop:60}}>Add Date</h7>
+         <br/>
          <input
            name="add_date"
            required={true}
@@ -124,7 +129,8 @@ const Admin = () => {
          />
          <br />
          <br />
-        
+         <h7 style={{fontWeight:700,fontStyle:'italic',fontSize:'18px',marginRight:330, marginTop:60}}>Add Slot</h7>
+         <br/>
          <select  className="form-field"  required={true} name="add_slot" 
          style={{width:400, height:40, marginTop:10,textAlign:'center'}} placeholder="Add Slot"
             onChange={(e) => {
@@ -146,9 +152,11 @@ const Admin = () => {
            <option value="4PM">4PM</option>
            <option value="5PM">5PM</option>
            </select>
-         
+           
            <br />
-         <br />
+           <br />
+           <h7 style={{fontWeight:700,fontStyle:'italic',fontSize:'18px',marginRight:240, marginTop:60}}>Choose Availability</h7>
+           <br/>
            <select className="form-field"  required name="isAvailable" 
          style={{width:400, height:40, marginTop:10,textAlign:'center'}} 
             onChange={(e) => {
