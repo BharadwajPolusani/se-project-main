@@ -21,16 +21,30 @@ const Booking = () => {
       const onSubmit = (e) => {
         e.preventDefault();
         console.log(newAccount)
-        let a = {
-          // service: e.target.service.value,
-          // city: e.target.city.value,
-          // hospital: e.target.hospital.value,
-          // date: e.target.date.value,
-          // slot: e.target.slot.value
-        };
-        updatenewacc(a);
-        console.log(newAccount);
         console.log(JSON.stringify(newAccount));
+        fetch(`http://localhost:8080/appointment`, {
+          method:"POST",
+          headers:{
+            "Content-Type" : "application/json",
+            token : localStorage.getItem('token'),
+          },
+          body: JSON.stringify(newAccount)
+        })
+        .then(res=>{
+            if (res.status === 201 || res.status === 200){
+              return res.json();
+            } else{
+              // alert('Something went wrong!!');
+            }
+          })
+          .then((res) => {
+            console.log(res)
+        if(res!==null){
+          //navigate("/");
+        }else{
+          alert('fails');
+        }
+          });
         //testing(e);
       };
       let [bookingTimes, setBookingTimes] = useState([]);
@@ -38,7 +52,7 @@ const Booking = () => {
     //let location = 'Overland Park';
     const changeCity = (event) => {
         setSelected(event.target.value);
-        //console.log('222')
+            //console.log('222')
     }
 
     const changeDate = (event) => {
@@ -48,7 +62,7 @@ const Booking = () => {
         headers:{
           "Content-Type" : "application/json",
           token : localStorage.getItem('token'),
-        },
+        }
       })
       .then(res=>{
           if (res.status === 201 || res.status === 200){
@@ -62,7 +76,7 @@ const Booking = () => {
           setBookingTimes(data);
           setSelectedDate(event.target.value);
           console.log(event.target.value, data);
-        })
+        });
   }
   let locs =[];
 
