@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import React from "react";
 import { BrowserRouter, useNavigate, Link, Router, Route, Routes} from "react-router-dom";
 //write an api to fetch locations on page reload 
@@ -8,6 +8,8 @@ const Booking = () => {
 
     const [selected, setSelected] = React.useState("");
     const [selectedDate, setSelectedDate] = React.useState("");
+    const [selectService, setSelectService] = React.useState("");
+
      
     //const BookingDetails = () => {
       const [newAccount, updatenewacc] = useState({
@@ -17,11 +19,22 @@ const Booking = () => {
         date: "",
         slot: ""
       });
+    
+      const serviceRef = useRef(null);
+      const locationRef = useRef(null);
+      const dateRef = useRef(null);
+      const slotRef = useRef(null);
 
       const onSubmit = (e) => {
         e.preventDefault();
         console.log(newAccount)
         console.log(JSON.stringify(newAccount));
+        e.target.reset();
+        serviceRef.current.value = '';
+        locationRef.current.value = '';
+        dateRef.current.value = '';
+        slotRef.current.value = '';
+
         fetch(`http://localhost:8080/appointment`, {
           method:"POST",
           headers:{
@@ -48,6 +61,7 @@ const Booking = () => {
         //testing(e);
       };
       let [bookingTimes, setBookingTimes] = useState([]);
+      let [locations, setLocations] = useState([]);
       // setBookingTimes(["Choose Slot"]);
     //let location = 'Overland Park';
     const changeCity = (event) => {
@@ -78,7 +92,7 @@ const Booking = () => {
           console.log(event.target.value, data);
         });
   }
-  let locs =[];
+
 
   const getLocations = (event) => {
     fetch(`http://localhost:8080/location`, {
@@ -95,12 +109,16 @@ const Booking = () => {
         alert('Something went wrong!!');
       }
     })
-    .then(res => {
-        res.map((k,v)=>
-        locs = [...locs,k.cityState]);
-        let slocs = locs.map((e1)=><option key={e1}>{e1}</option>);
-        return slocs;
-           // console.log(locs);
+    .then(data => {
+      setLocations(data);
+          setSelectService(event.target.value);
+          console.log(event.target.value, data);
+
+        // res.map((k,v)=>
+        // locs = [...locs,k.cityState]);
+        // let slocs = locs.map((e1)=><option key={e1}>{e1}</option>);
+        // return slocs;
+        //    // console.log(locs);
          })
 }
 
@@ -122,6 +140,10 @@ const Booking = () => {
   if (selectedDate) {
     bTs = bookingTimes && bookingTimes.map((el) => <option key={el}>{el}</option>);
   }
+  let locs;
+  if (selectService) {
+    locs = locations && locations.map((el) => <option key={el.city}>{el.city}</option>);
+  }
 
   const navigate=useNavigate()
   
@@ -132,6 +154,7 @@ return (
           style={{marginLeft:530}}
           >Book Your Slot</h2>
             <select class="form-field"
+            ref={serviceRef}
              style={{width:400, height:40, marginTop:10,textAlign:'center'}}
              required={true}
              onChange={(e) => {
@@ -149,15 +172,18 @@ return (
             <br/>
  
             <select class="form-field" 
+            ref={locationRef}
             style={{width:400, height:40, marginTop:10,textAlign:'center'}}
              onChange={(e) => {
               changeCity(e);
               const value = e.target.value;
               updatenewacc({ ...newAccount, location: e.target.value });
               //console.log(value);
-            }}>   
-            <option selected disabled = {true} value="">Choose City ...</option>
-            {getLocations}
+            }}><option selected disabled = {true} value="">Choose Location ...</option>
+            {locs}
+                 
+            {/* <option selected disabled = {true} value="">Choose City ...</option>
+            {getLocations} */}
            </select>
             <br/>
             {/* <select class="form-field" 
@@ -172,6 +198,7 @@ return (
             </select> */}
             <br/>
             <input
+            ref={dateRef}
             style={{width:400, height:40, marginTop:10,textAlign:'center'}}
             class="form-field"
             onChange={(e) => {
@@ -189,7 +216,9 @@ return (
           />
           <br/>
           <br/>
-          <select class="form-field" 
+          <select 
+          ref={slotRef}
+          class="form-field" 
               style={{width:400, height:40, marginTop:10,textAlign:'center'}}
               onChange={(e) => {
               const value = e.target.value;
