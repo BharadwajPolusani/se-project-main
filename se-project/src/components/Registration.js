@@ -2,7 +2,7 @@ import { useState } from "react";
 import React from "react";
 import { BrowserRouter, useNavigate, Link, Router, Route, Routes} from "react-router-dom";
 import logo from './../images/logo.png';
-import '../../src/components/Registration.css';
+import '../../src/components/Booking.css';
 const Registration = () => {
     const [newAccount, updatenewacc] = useState({ //need to modify field names
       first_name: "",
@@ -61,26 +61,42 @@ const Registration = () => {
     };
     const navigate=useNavigate()
     return (
-      <form onSubmit={onSubmit}>
+      <div className="class">
+      <form className="add-form" onSubmit={onSubmit}>
        
         <div  style = {{width: '100%',
     height: '100px',
     display: 'flex',
     alignContent: 'center',
     justifyContent: 'space-between',
-    position: 'relative'}}/>
-        <div className="form-control">
+    position: 'relative'}}>
 
-        <div>
-        <h2 className='Title'
-          style={{marginLeft:530}}
-          >Create New Account</h2>
-        <input
+<div style={{width:'30%'}}>
+        <img src={logo} style={{height: 100, width:100, float:'left' , margin:40}} alt="logo" />
+        </div>
+        <div style={{width:'60%'}}>
+        <h1 className="Title"
+        style={{marginTop: 10}}>Create new Account
+        </h1>
+        </div>
+        <div style={{width:'10%'}}>
+          <button 
+          style={{cursor:'pointer', marginTop: 10}}
+          onClick={() => {
+              navigate("/");
+              }}>
+            Log Out
+          </button>
+          </div>
+          </div>
+
+        <div className="form-field">
+                <input
             name="first_name"
             required={true}
             type="text"
             //value={"First Name"}
-            style={{width:400, height:40, marginTop:10,textAlign:'center'}}
+            style={{width:400, height:40,marginLeft: 400, marginTop:10,textAlign:'center'}}
             placeholder="First Name"
             //value={text}
             onChange={(e) => {
@@ -90,12 +106,12 @@ const Registration = () => {
             }}
           />
           <br />
-          <input
+          <input class="form-field"
             name="last_name"
             required={true}
             type="text"
             //value={"Last Name"}
-            style={{width:400, height:40, marginTop:30,textAlign:'center'}}
+            style={{width:400, height:40, marginTop:30,marginLeft: 400, textAlign:'center'}}
             placeholder="Last Name"
             //value={text}
             onChange={(e) => {
@@ -108,11 +124,11 @@ const Registration = () => {
           <br />
           
           <input
-            name="email_id"
+            name="email_id" className="form-field"
             required={true}
             type="Email"
             //value={"Email"}
-            style={{width:400, height:40, marginTop:10,textAlign:'center'}}
+            style={{width:400, height:40, marginLeft: 400,marginTop:10,textAlign:'center'}}
             placeholder="Email"
             onChange={(e) => {
               const value = e.target.value;
@@ -123,11 +139,11 @@ const Registration = () => {
           <br />
 
           <input
-            name="password"
+            name="password" className="form-field"
             required={true}
             type="password"
             //value={"Email"}
-            style={{width:400, height:40, marginTop:10,textAlign:'center'}}
+            style={{width:400, height:40, marginLeft: 400, marginTop:10,textAlign:'center'}}
             placeholder="New Password"
             onChange={(e) => {
               const value = e.target.value;
@@ -138,11 +154,11 @@ const Registration = () => {
           <br />
           
           <input
-            name="dob"
+            name="dob" className="form-field"
             required={true}
             type="date"
             //value="DOB"
-            style={{width:400, height:40, marginTop:10,textAlign:'center'}}
+            style={{width:400, height:40, marginLeft: 400,marginTop:10,textAlign:'center'}}
             placeholder="First Name"
             onChange={(e) => {
               const value = e.target.value;
@@ -152,12 +168,12 @@ const Registration = () => {
           <br />
           <br />
          
-          <input
+          <input className="form-field"
             name="ssn"
             required={true}
             type="text"
             //value={"SSN"}
-            style={{width:400, height:40, marginTop:10,textAlign:'center'}}
+            style={{width:400, height:40,marginLeft: 400, marginTop:10,textAlign:'center'}}
             placeholder="SSN"
             onChange={(e) => {
               const value = e.target.value;
@@ -167,12 +183,12 @@ const Registration = () => {
           <br />
           <br />
           
-          <input
+          <input className="form-field"
             name="telephone"
             required={true}
             type="tel"
             //value={"Mobile"}
-            style={{width:400, height:40, marginTop:10,textAlign:'center'}}
+            style={{width:400, height:40, marginLeft: 400,marginTop:10,textAlign:'center'}}
             placeholder="Mobile Number"
             onChange={(e) => {
               const value = e.target.value;
@@ -181,15 +197,14 @@ const Registration = () => {
           />
 
           <br />
-           <input type="submit" value="Submit" className="btn" 
+           <input className="form-field" type="submit" value="Submit" 
            //onClick={testing} 
-           style={{width:100, height:40, marginTop:25,marginBottom:55,textAlign:'center',color: 'blue',borderColor: 'blue'}} />
-        </div>
+           style={{width:100, height:40,marginLeft: 550, marginTop:25,marginBottom:55,textAlign:'center',color: 'blue',borderColor: 'blue'}} />
         </div>
        
       </form>
-      
-    );
-  };
+      </div>
+    )
+  }
   
   export default Registration;

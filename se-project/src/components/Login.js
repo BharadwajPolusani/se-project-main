@@ -87,7 +87,7 @@ const onSubmit = (e) => {
 
       const navigate=useNavigate()
   return (
-<div className='class'>
+<div className='lclass'>
 
     <div style={{width: '100%', overflow: 'hidden'}}>
     <div style={{width: '600px', float: 'left'}}> 

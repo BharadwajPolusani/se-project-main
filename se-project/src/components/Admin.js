@@ -14,8 +14,11 @@ const Admin = () => {
       slot: "",
       isAvailable: "" 
     });
+    
+
+
     const testing=(e)=> { //chnage the method name, 
-      e.preventDefault();
+      //e.preventDefault();
       fetch("http://localhost:8080/oneDate", {
         method:"POST",
         headers:{
@@ -41,7 +44,7 @@ const Admin = () => {
         }
       
       });
-  
+      e.target.reset();
     }
     const onSubmit = (e) => {
       e.preventDefault();
@@ -58,11 +61,11 @@ const Admin = () => {
     const navigate=useNavigate()
     return (
       
-      <div>
+      <div className = "class">
 
-      <form onSubmit={onSubmit}>
+      <form class="add-form" onSubmit={onSubmit}>
     
-       <div  style = {{width: '110%',
+       <div  style = {{width: '100%',
           height: '100px',
           display: 'flex',
           alignContent: 'center',
@@ -73,23 +76,28 @@ const Admin = () => {
          <img src={logo} style={{height: 100, width:100, float:'left' , margin:40}} alt="logo" />
        </div>
        <div style={{width:'60%'}}>
-       <h1 
-       style={{fontFamily:'"Trebuchet MS Bold Italic", "Trebuchet MS", sans-serif',
-       fontWeight:700,fontStyle:'italic',fontSize:'25px',paddingLeft:170, marginTop:60}}>Admin Account
-       </h1>
+       <h1 className='Title'
+        style={{marginLeft:50, marginTop: 0}}
+          >Add Your Slot Here</h1>
        </div>
-       <div style={{width:'10%'}}>
-       {/* <input type="logout" value="Logout" className="btn" 
-          //onClick={testing} 
-          style={{width:100, height:40, marginTop:40,textAlign:'center',color: 'green',borderColor: 'green'}} /> */}
+        <div style={{width:'10%'}}>
+       <button
+         style={{width:100, height:40, marginTop:50,marginBottom:10,marginTop:10,textAlign:'center',color: 'white',backgroundColor:'black',borderColor: 'black'}}
+          onClick={() => {
+              navigate("/");
+              }}>
+            Log Out
+          </button>
+          <h8 
+       style={{fontFamily:'"Trebuchet MS Bold Italic", "Trebuchet MS", sans-serif',
+       fontWeight:700,fontStyle:'italic',fontSize:'10px'}}>Admin Account
+       </h8>
        </div>
        </div>
        <div className="form-control">
 
        <div>
-       <h2 className='Title'
-        style={{marginLeft:520}}
-          >Add Your Slot Here</h2>
+       
 
       <h7 style={{fontWeight:700,fontStyle:'italic',fontSize:'18px',marginRight:295, marginTop:60}}>Add Location</h7>  
        <br/>
@@ -175,14 +183,7 @@ const Admin = () => {
           <input type="submit" value="Submit" className="btn" 
           style={{width:100, height:40, marginTop:50,textAlign:'center',color: 'black',backgroundColor:'lightBlue',borderColor: 'black'}} />
        </div>
-       <button
-         style={{width:100, height:40, marginTop:50,marginLeft:1000,marginBottom:50,marginTop:10,textAlign:'center',color: 'white',backgroundColor:'black',borderColor: 'black'}}
-          onClick={() => {
-              navigate("/");
-              }}>
-            Log Out
-          </button>
-       </div>      
+             </div>      
      </form>
       </div>
       
