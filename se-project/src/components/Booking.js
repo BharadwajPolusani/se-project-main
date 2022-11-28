@@ -170,7 +170,7 @@ return (
           </div>
           <div style={{width:'10%'}}>
           <button 
-          style={{cursor:'pointer', marginTop: 10}}
+          style={{cursor:'pointer',width:100, height:40, marginTop: 10,textAlign:'center',color: 'white',backgroundColor:'black',borderColor: 'black'}}
           onClick={() => {
               navigate("/");
               }}>
